@@ -1,51 +1,403 @@
 function calculatePrice() {
     const productPrice = parseFloat(document.getElementById('productPrice').value);
-    const taxes = parseFloat(document.getElementById('taxes').value);
-    const platformFees = parseFloat(document.getElementById('platformFees').value);
+    
 
     //Lucro desejado %
     const desiredProfit = parseFloat(document.getElementById('desiredProfit').value);
 
 
 
-    //Taxa da plataforma
-    const totalPlatformFees = (productPrice * platformFees) / 100;
-    console.log(totalPlatformFees) 
+    //tabela fixa Impost shope
+    const imposat=(14.3)/ 100
+    console.log(imposat)
+    //porcentagem comissão shope
+    const comis=(12.57) /100
+    console.log(comis)
+    //margem de lucro
+    const margin=(desiredProfit) / 100
+    console.log(margin)
+
+
+
+    //Forula preço de venda;
+    const custoUni= (productPrice + 3)//taxa de 3R$ adicionada;
+    console.log(custoUni)
+    //imposto + comissão da shope + margem de lucro 
+    const somaicm= (14.3 + 12.57 + desiredProfit) / 100
+    console.log(somaicm)
+    //calcular denominador da formula
+    const denom= (1 - somaicm)
+    console.log(denom)
+
+    //Preço da venda:
+    const precVend=(custoUni)/ denom
+    console.log(precVend)
+    //resum for calc price final que vai pro marktplace sobre o produto;
+    const buyPric= precVend
+    console.log(buyPric)
+
+
+    //verificações especificadas
+    //aplicado imposto
+    const impost=(buyPric * imposat) 
+    console.log(impost)
+    //comissão de marketplace:
+    const comissMark=(buyPric * comis)
+    console.log(comissMark)
+    //lucro:
+    const lucroP=(buyPric * margin)
+    console.log(lucroP)
+    //custo total:
+    const custTota=(productPrice + 3 + impost + comissMark) //3R$ custpo de envio
+    console.log(custTota)
+    //Lucro Real:
+    const lucrototo=(buyPric- custTota +impost)
+    console.log(lucrototo)
+
+
+
+
+
+
+
+    //page Info Shope
+    document.getElementById('shopee').innerHTML = "<h3>Shopee:</h3><p>R$ " + buyPric.toFixed(2) + "</p>";
+
+    document.getElementById('lucroLiqshope').innerHTML = "<p> Á receber por venda : " + buyPric.toFixed(2) + " R$ </p>";
+    
+    document.getElementById('postpag').innerHTML= "<p>Imposto Pago: " + impost.toFixed(2) + " R$</p>";
+
+    document.getElementById('comi').innerHTML= "<p>Comissão da shope: " + comissMark.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('luc').innerHTML= "<p>Lucro: " + lucroP.toFixed(2) + " R$ </p>";
+    
+    document.getElementById('custo').innerHTML= "<p>Custo total: " + custTota.toFixed(2) + " R$ </p>";
+
+    document.getElementById('lucr').innerHTML= "<p>Lucro Real + imposto: " + lucrototo.toFixed(2) + " R$</p>";
+    //*** *
+
+
+
+
+
+
+
+    //mercado livre taxas
+    //tabela fixa Impost MErliver
+    
+    //porcentagem comissão Mvliv
+    const comisMeli=(12.57) /100
+    console.log(comis)
+
+
+    const weight = parseFloat(document.getElementById('weight').value);
+    //criando const pra colocar dentro do if;
+    let shippingPrice;
+
+
+    //taxa mercado livre envio // com reputação verde
+    if (productPrice <=79){
+        //quem paga o frete e o comprador
+        shippingPrice= 6
+        }else if(productPrice >=79.01){
+        //valor acima de79,01 pago taxa; ex se o preço do produto 1 produto sem contar com a quantidade que foi pega, ele paga o frete;
         
-    const conttotalPlat= (totalPlatformFees + productPrice + 3);
 
-    console.log(conttotalPlat) 
-    //impostos
-    const totalTaxes = (conttotalPlat * taxes) /100;
+        if (weight <=300 ) {
+            shippingPrice = 20.45;
+        } else if (weight >= 301 && weight<=500) {
+            shippingPrice = 20.95;
+        } else if (weight >=501 && weight<=1000) {
+            shippingPrice = 21.95;
+        } else if (weight >= 1001 && weight<=2000) {
+            shippingPrice = 23.45;
+        } else if (weight >= 2001&& weight<=3000) {
+            shippingPrice = 23.95;
+        } else if (weight >= 3001 && weight<=4000) {
+            shippingPrice = 24.95;
+        } else if (weight >=4001 && weight <=5000) {
+            shippingPrice = 25.95;
+        } else if (weight >= 5001 && weight<= 9000) {
+            shippingPrice = 41.95;
+        } else if (weight >= 9001 && weight <=13000) {
+            shippingPrice = 65.95;
+        } else if (weight >= 13001 && weight <=17000) {
+            shippingPrice = 73.45;
+        } else if (weight >= 17001 && weight<=23000) {
+            shippingPrice = 85.95;
+        } else if (weight >= 23001 && weight <=30000) {
+            shippingPrice = 98.95;
+        } else if (weight >= 30001 && weight <=40000) {
+            shippingPrice = 109.45;
+        } else if (weight >= 40001 && weight <=50000) {
+            shippingPrice = 116.95;
+        } else if (weight >= 50001 && weight <=60000) {
+            shippingPrice = 124.95;
+        } else if (weight >= 60001 && weight <=70000) {
+            shippingPrice = 141.45;
+        } else {
+            shippingPrice = 156.95;
+        };
 
-    console.log(totalTaxes) 
+        
     
-    const conttotaltax= (totalTaxes + conttotalPlat)
+        console.log(shippingPrice)
+        console.log("chegou")
+    }
 
-    console.log(conttotaltax) 
 
-    // Lucro total
 
-    const totalProfit = (conttotaltax * desiredProfit) /100;
-
-    console.log(totalProfit) 
     
-    const conttotalproft= ( totalProfit + conttotaltax)
-
-    console.log(conttotalproft) 
 
 
-    //Preço final
-
-    const totalPrice =  conttotalproft;
-
-    console.log(totalPrice) 
 
 
-    document.getElementById('shopee').innerHTML = "<h3>Shopee:</h3><p>R$ " + totalPrice.toFixed(2) + "</p>";
 
-    document.getElementById('lucroLiqshope').innerHTML = "<p> Á receber por venda : " + totalProfit.toFixed(2) + "</p>";
+    //porcentagem de categorias
+
+    const selectedValue = document.querySelector('input[name="categ"]:checked').value;
+    console.log(selectedValue);
+
+
+    //depois fazer opção pra colocar aqui definir qual vai ser usada entre classico e premium: ou seja fazer 2 opção pra pessoa escolher e usar; Classico ou premium
     
+    //onde está armazenada minha porcentagem de categoria correta;
+
+
+    
+    //verificando se o botão do foi clickad
+    const checkbox = document.getElementById('classico-premium');
+
+    let premiumclass=Number;
+
+    if (checkbox.checked) {
+        premiumclass=1;
+    } else {
+        premiumclass=0;
+    }
+    console.log(premiumclass)
+    
+
+    //anuncio classico
+    if(premiumclass == 0){
+        //está na categoria classica
+
+
+        if(selectedValue==1){
+            porcentCategor=13;
+
+        }else if(selectedValue==2){
+            porcentCategor=12;
+
+        }else if (selectedValue==3){
+            porcentCategor=11.5
+
+        }else if(selectedValue==4){
+            porcentCategor=12
+
+        }else if (selectedValue==5){
+            porcentCategor=14
+
+        }else if(selectedValue==6){
+            porcentCategor=11.5
+            
+        }else if (selectedValue==7){
+            porcentCategor=11.5
+
+        }else if (selectedValue==8){
+            porcentCategor=12.5
+            
+        }else if(selectedValue==9){
+            porcentCategor=12
+
+        }
+            
+        //se ele não marcou nenhuma: volta com errorWARN; dizendo que não foi selecionada nem uma opção;
+
+            
+            
+            
+    //anuncio premium
+    }else{
+        // está na categoria Premium
+        if(selectedValue==1){
+            porcentCategor=18;
+
+        }else if(selectedValue==2){
+            porcentCategor=17;
+
+        }else if (selectedValue==3){
+            porcentCategor=16.5
+
+        }else if(selectedValue==4){
+            porcentCategor=17
+
+        }else if (selectedValue==5){
+            porcentCategor=19
+
+        }else if(selectedValue==6){
+            porcentCategor=16.5
+            
+        }else if (selectedValue==7){
+            porcentCategor=16.5
+
+        }else if (selectedValue==8){
+            porcentCategor=17.5
+            
+        }else if(selectedValue==9){
+            porcentCategor=17
+        }
+
+        
+    }
+
+
+    //taxa de categoria:
+    console.log(porcentCategor)
+
+
+    
+    //Formula preço de venda;
+    const custMenvio= (productPrice + shippingPrice)//taxa de envioR$ adicionada;
+    console.log(custMenvio)
+    //imposto + comissão da shope + margem de lucro 
+    const somaDoimc= (14.3 + porcentCategor + desiredProfit)/100
+    console.log(somaDoimc)
+    console.log("ola")
+    //calcular denominador da formula
+    const subDenominad= (1 - somaDoimc)
+    console.log(subDenominad)
+
+    //Preço da venda:
+    const pVenda=(custMenvio)/ subDenominad
+    console.log(pVenda)
+    //resum for calc price final que vai pro marktplace sobre o produto;
+    const buyVend= pVenda
+    console.log(buyVend)
+
+
+
+
+    //verificações especificadas mercadlv
+    //aplicado imposto
+    const imPost=(buyVend * imposat) 
+    console.log(imPost)
+    //comissão de marketplace:
+    const comiscate=(buyVend * porcentCategor)/100
+    console.log(comiscate)
+    //lucro:
+    const lucrVend=(buyVend * margin)
+    console.log(lucrVend)
+    //custo total:
+    const custProd=(productPrice + shippingPrice + imPost +comiscate) //R$ custpo de envio
+    console.log(shippingPrice)
+    console.log(imPost)
+    console.log(productPrice)
+    console.log(comiscate)
+
+    console.log(custProd)
+    //Lucro Real:
+    const lucroRes=(buyVend-custProd + imPost)
+    console.log(lucroRes)
+
+
+
+    // valor do envio
+    //page inf MercadoLivre
+    document.getElementById('mercadolivre').innerHTML = "<h3>Mercado Livre:</h3><p>R$ " + buyVend.toFixed(2) + "</p>";
+ 
+    document.getElementById('imPost').innerHTML= "<p>Imposto pago: " + imPost.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('comiscate').innerHTML= "<p>comissão Mercadolivre: " + comiscate.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('shippingPrice').innerHTML= "<p>Custo de envio: " + shippingPrice.toFixed(2) + " R$ </p>";
+    
+
+
+    document.getElementById('lucrVend').innerHTML= "<p>Lucro: " + lucrVend.toFixed(2) + " R$ </p>";
+    
+
+
+    document.getElementById('custProd').innerHTML= "<p>Custo total: " + custProd.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('lucroRes').innerHTML= "<p>Lucro Real + Imposto: " + lucroRes.toFixed(2) + " R$ </p>";
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // com reputação amarela e sem reputação 
+//     if (weight <=300 ) {
+//         shippingPrice = 24.54;
+//     } else if (weight >= 301 && weight<=500) {
+//         shippingPrice = 25.14;
+//     } else if (weight >=501 && weight<=1000) {
+//         shippingPrice = 26.34;
+//     } else if (weight >= 1001 && weight<=2000) {
+//         shippingPrice = 28.14;
+//     } else if (weight >= 2001&& weight<=3000) {
+//         shippingPrice = 28.74;
+//     } else if (weight >= 3001 && weight<=4000) {
+//         shippingPrice = 29.94;
+//     } else if (weight >=4001 && weight <=5000) {
+//         shippingPrice = 31.14;
+//     } else if (weight >= 5001 && weight<= 9000) {
+//         shippingPrice = 50.34;
+//     } else if (weight >= 9001 && weight <=13000) {
+//         shippingPrice = 79.14;
+//     } else if (weight >= 13001 && weight <=17000) {
+//         shippingPrice = 88.14;
+//     } else if (weight >= 17001 && weight<=23000) {
+//         shippingPrice = 103.14;
+//     } else if (weight >= 23001 && weight <=30000) {
+//         shippingPrice = 118,74;
+//     } else if (weight >= 30001 && weight <=40000) {
+//         shippingPrice = 131.34;
+//     } else if (weight >= 40001 && weight <=50000) {
+//         shippingPrice = 140.34;
+//     } else if (weight >= 50001 && weight <=60000) {
+//         shippingPrice = 149.94;
+//     } else if (weight >= 60001 && weight <=70000) {
+//         shippingPrice = 169.74;
+//     } else {
+//         shippingPrice = 188.34;
+//     };
+
+    
+
+//     console.log(shippingPrice)
+//     console.log("chegou")
+// }
+
+
+    //ativar botão 
+
+
+
+
 
 
 
@@ -78,63 +430,23 @@ function calculatePrice() {
     const taxaCategoria= 0.19;
 
 
+
+
+
+
+
+
+
     //frete 40% em produtos novo // 20% em categorias especiais
     //table SUL e SULDEST
-    if (weight <=300 ) {
-        shippingPrice = 24.54;
-    } else if (weight >= 300) {
-        shippingPrice = 25.14;
-    } else if (weight >=501) {
-        shippingPrice = 26.34;
-    } else if (weight >= 1001) {
-        shippingPrice = 28.14;
-    } else if (weight >= 2001) {
-        shippingPrice = 28.74;
-    } else if (weight >= 3001) {
-        shippingPrice = 29.94;
-    } else if (weight >=4001 ) {
-        shippingPrice = 31.14;
-    } else if (weight >= 5001) {
-        shippingPrice = 50.34;
-    } else if (weight >= 9001) {
-        shippingPrice = 79.14;
-    } else if (weight >= 13001) {
-        shippingPrice = 88.14;
-    } else if (weight >= 17001) {
-        shippingPrice = 103.14;
-    } else if (weight >= 23001) {
-        shippingPrice = 118,74;
-    } else if (weight >= 30001) {
-        shippingPrice = 131.34;
-    } else if (weight >= 40001) {
-        shippingPrice = 140.34;
-    } else if (weight >= 50001) {
-        shippingPrice = 149.94;
-    } else if (weight >= 60001) {
-        shippingPrice = 169.74;
-    } else {
-        shippingPrice = 188.34;
-    };
 
-    console.log(shippingPrice)
 
 
     //Table nas demais regiões do País
 
-    
-   const tXcategoria= (taxapCategoria * productPrice);
-    console.log(tXcategoria)
-   const contCategori= (tXcategoria + 6) ;
-    console.log(contCategori)
-    const imporTos= (contCategori * shippingPrice)
-    console.log(imporTos)
-    const contImpost= (imporTos + contCategori)
-console.log(contImpost)
-    const lucrio= (contImpost * desiredProfit);
-console.log(lucrio)
+ 
 
-    const verificLucri= (lucrio + contImpost);
-console.log(verificLucri)
+
 
 
    //taxa envio com frete gratis
@@ -146,15 +458,7 @@ console.log(verificLucri)
 
 
 
-
-
-    
-
-
-
-
-
-    
+    //case -- swtich se o Porcentagem do produto se ele se encaixar em algum dessas categorias cobrará uma porcentagem;
 
 
 
@@ -177,11 +481,10 @@ console.log(verificLucri)
 
 
 
-    document.getElementById('mercadolivre').innerHTML = "<h3>Mercado Livre:</h3><p>R$ " + totalPrice.toFixed(2) + "</p>";
-    
-    document.getElementById('magalu').innerHTML = "<h3>Magalu:</h3><p>R$ " + totalPrice.toFixed(2) + "</p>";
 
-    document.getElementById('amazon').innerHTML = "<h3>Amazon:</h3><p>R$ " + totalPrice.toFixed(2) + "</p>";
+    document.getElementById('magalu').innerHTML = "<h3>Magalu:</h3><p>R$ " + buyPric.toFixed(2) + "</p>";
+
+    document.getElementById('amazon').innerHTML = "<h3>Amazon:</h3><p>R$ " + buyPric.toFixed(2) + "</p>";
 
 
 
@@ -220,3 +523,36 @@ console.log(verificLucri)
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

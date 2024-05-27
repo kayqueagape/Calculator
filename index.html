@@ -1,94 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Preço para Plataformas Online</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="javascript/script.js"></script>
-</head>
-<body>
-    <h2>Calculadora de Preço </h2>
-    
-    
-    <form id="priceCalculator">
-        <label for="productPrice">Preço do Produto:</label>
-        <input type="number" id="productPrice" placeholder="Digite o preço do produto" required>
-
-        <label for="taxes">Impostos (%):</label>
-        <input type="number" id="taxes" placeholder="Digite a porcentagem de impostos" required>
-
-        <label for="platformFees">Taxas da Plataforma (%):</label>
-        <input type="number" id="platformFees" placeholder="Digite a porcentagem das taxas da plataforma" required>
-
-        <label for="desiredProfit">Lucro Desejado (%):</label>
-        <input type="number" id="desiredProfit" placeholder="Digite o lucro desejado" required>
-
-        <button type="button" onclick="calculatePrice()">Calcular Preço Total</button>
-    </form>
-   
-
-    <form>
-        <label for="weight">Peso do Produto (em kg):</label>
-        <input type="number" id="weight" placeholder="Digite o peso" onchange="calculateShipping()" required>
-        <p>Preço do Frete: <span id="shippingPrice"></span></p>
-        
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
-    <div id="insid" style="display: none" >
-    
-        <div id="mercadolivrea">
-            <div id="totalPrice"></div>
-            
-            <div>
-                <h2 id="mercadolivre"></h2>
-                <p id="lucroLiq"></p>
-            </div>
-        </div>
-
-        <div id="magalua">
-            <div id="totalpriceMaglu"></div>
-            
-            <div>
-                <h2 id="magalu"></h2>
-                <p id="lucroLiq"></p>
-            </div>
-        </div>
-
-        <div id="amazona">
-            
-            <div id="totalpriceAmazon"></div>
-            
-            <div>
-                <h2 id="amazon"></h2>
-                <p id="lucroLiq"> </p>
-            </div>
-        </div>
-
-        <div id="shopeea">
-            <div id="totalpriceShopee"></div>
-
-            <div>
-                <h2 id="shopee"></h2>
-                <p id="lucroLiqshope"></p>
-            </div>
-        </div>
-      
-        
-    </div>
-    
-    
-
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
