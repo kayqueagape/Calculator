@@ -1,3 +1,21 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const checkbox = document.getElementById('classico-premium');
+    const texto = document.getElementById('texto');
+
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            texto.textContent = 'Premium';
+        } else {
+            texto.textContent = 'Clássico';
+        }
+    });
+});
+
+
+
+
+
+
 function calculatePrice() {
     const productPrice = parseFloat(document.getElementById('productPrice').value);
     
@@ -96,11 +114,17 @@ function calculatePrice() {
     let shippingPrice;
 
 
+
+
+    const pricecustOn= (productPrice*margin+productPrice)
+    console.log(pricecustOn)
+    console.log("eu estive aqui")
+
     //taxa mercado livre envio // com reputação verde
-    if (productPrice <=79){
+    if (pricecustOn <=79){
         //quem paga o frete e o comprador
         shippingPrice= 6
-        }else if(productPrice >=79.01){
+        }else if(pricecustOn >=79.01){
         //valor acima de79,01 pago taxa; ex se o preço do produto 1 produto sem contar com a quantidade que foi pega, ele paga o frete;
         
 
@@ -178,6 +202,11 @@ function calculatePrice() {
     }
     console.log(premiumclass)
     
+
+    //alternar entre classico e premium
+
+
+
 
     //anuncio classico
     if(premiumclass == 0){
@@ -325,30 +354,11 @@ function calculatePrice() {
     
 
     document.getElementById('lucroRes').innerHTML= "<p>Lucro Real + Imposto: " + lucroRes.toFixed(2) + " R$ </p>";
-    
-    
-
-    
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //continuação dps mercado livre
     // com reputação amarela e sem reputação 
 //     if (weight <=300 ) {
 //         shippingPrice = 24.54;
@@ -398,45 +408,7 @@ function calculatePrice() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // Mercado Livre
-    
-    //Taxa da plataforma
- 
-    if (productPrice <=79 ) {
-        console.log("Está na faixa dos 79 R$");
-
-    }
-
-    //classico
-    const taxapCategoria= 0.14;
-
-    //premium
-    const taxaCategoria= 0.19;
-
-
-
-
-
-
-
-
-
+    //depois verificar
     //frete 40% em produtos novo // 20% em categorias especiais
     //table SUL e SULDEST
 
@@ -444,19 +416,12 @@ function calculatePrice() {
 
     //Table nas demais regiões do País
 
- 
-
-
 
 
    //taxa envio com frete gratis
    // const gengent= (contCategori + shippingPrice)
 
     //imposto
-
-
-
-
 
     //case -- swtich se o Porcentagem do produto se ele se encaixar em algum dessas categorias cobrará uma porcentagem;
 
@@ -467,6 +432,132 @@ function calculatePrice() {
 
 
 
+    //magalu
+    //comissão da magalu fixa de 18%
+    const comitmagu= 0.18,
+    taxamagal= 5;
+    let envioLua= Number;
+    
+    //resumindo quem paga o frete e o cliente ou seja isso aqui e com ele fuiii;
+
+
+    if (pricecustOn<=79){
+        console.log("sem desconto na tarifa de frete")
+        if (weight <=500 ) {
+            envioLua = 27.90;
+        } else if (weight >= 501 && weight<=1000) {
+            envioLua = 32.90;
+        } else if (weight >=1001 && weight<=2000) {
+            envioLua = 35.90;
+        } else if (weight >= 2001 && weight<=5000) {
+            envioLua = 44.90;
+        } else if (weight >= 5001&& weight<=9000) {
+            envioLua = 47.90;
+        } else if (weight >= 9001 && weight<=13000) {
+            envioLua = 52.90;
+        } else if (weight >=13001 && weight <=17000) {
+            envioLua = 57.90;
+        } else if (weight >= 17001 && weight<= 23000) {
+            envioLua = 62.90;
+        } else if (weight >= 23001 && weight <=29000) {
+            envioLua = 67.90;
+        } else if (weight >= 29001 && weight <=30000) {
+            envioLua = 69.90;
+        } else if (weight >= 30001 && weight<=40000) {
+            envioLua = 179.90;
+        } else if (weight >= 40001 && weight <=50000) {
+            envioLua = 189.90;
+        }
+    
+    }else if(pricecustOn>=79.01){
+        //prazo de despacho
+        //desconto de 50% no envio
+
+        if (weight <=500 ) {
+            envioLua = 13.95;
+        } else if (weight >= 501 && weight<=1000) {
+            envioLua = 16.45;
+        } else if (weight >=1001 && weight<=2000) {
+            envioLua = 17.95;
+        } else if (weight >= 2001 && weight<=5000) {
+            envioLua = 22.45;
+        } else if (weight >= 5001&& weight<=9000) {
+            envioLua = 23.95;
+        } else if (weight >= 9001 && weight<=13000) {
+            envioLua = 26.45;
+        } else if (weight >=13001 && weight <=17000) {
+            envioLua = 28.45;
+        } else if (weight >= 17001 && weight<= 23000) {
+            envioLua = 31.45;
+        } else if (weight >= 23001 && weight <=29000) {
+            envioLua = 33.95;
+        } else if (weight >= 29001 && weight <=30000) {
+            envioLua = 34.95;
+        } else if (weight >= 30001 && weight<=40000) {
+            envioLua = 89.95;
+        } else if (weight >= 40001 && weight <=50000) {
+            envioLua = 94.95;
+        }
+        // if(prazoDespach>=100){
+        //     console.log("desconto de 50% aplicado no envio")
+        // }else{
+        //     console.log("desconto de 25% aplicado no envio")
+        // }
+       
+    }
+
+    console.log(envioLua)
+    console.log("chegou")
+
+    
+    //Formula preço de venda;
+    const cmuMagalu= (productPrice + taxamagal);
+    console.log(`aqui está meu product price ${cmuMagalu}`);
+    
+    const porcetMaglu= (imposat + comitmagu+ margin)
+    console.log(`soma das porcentagens ${porcetMaglu}`);
+
+    const denomMagalu= (1-porcetMaglu);
+    console.log(denomMagalu)
+
+
+    const pvMaglu= (cmuMagalu/ denomMagalu);
+    console.log(pvMaglu);
+
+
+
+    //verificando
+    const impostMagalu=(pvMaglu*imposat) ,
+    comissaoMagalu=(pvMaglu*comitmagu) ,
+    lucrMaga=(pvMaglu*margin) ,
+    custoTomagu= (productPrice+taxamagal+impostMagalu+comissaoMagalu),
+    lucroRmagalu= (pvMaglu-custoTomagu);
+
+
+
+
+    document.getElementById('magalu').innerHTML = "<h3>Magalu:</h3><p>R$ " + pvMaglu.toFixed(2) + "</p>";
+
+
+ 
+    document.getElementById('ipIpag').innerHTML= "<p>Imposto pago: " + impostMagalu.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('comitmagu').innerHTML= "<p>comissão Magalu: " + comissaoMagalu.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('envioLua').innerHTML= "<p>Custo de envio: " + taxamagal.toFixed(2) + " R$ </p>";
+    
+
+
+    document.getElementById('lucroMagami').innerHTML= "<p>Lucro: " + lucrMaga.toFixed(2) + " R$ </p>";
+    
+
+
+    document.getElementById('custoTomagu').innerHTML= "<p>Custo total: " + custoTomagu.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('lucroReamga').innerHTML= "<p>Lucro Real + Imposto: " + lucroRmagalu.toFixed(2) + " R$ </p>";
 
 
 
@@ -476,15 +567,107 @@ function calculatePrice() {
 
 
 
+    //amazon
+    //taxa Por item
+    const taxaAmazon=2;
+
+
+
+    //comissão da amazon por categpr
+
+    if(selectedValue==1){
+        porcentAmazon=9;
+
+    }else if(selectedValue==2){
+        porcentAmazon=14;
+
+    }else if (selectedValue==3){
+        porcentAmazon=14;
+
+    }else if(selectedValue==4){
+        porcentAmazon=14;
+
+    }else if (selectedValue==5){
+        porcentAmazon=15;
+
+    }else if(selectedValue==6){
+        porcentAmazon=12;
+        
+    }else if (selectedValue==7){
+        porcentAmazon=14;
+
+    }else if (selectedValue==8){
+        porcentAmazon=13;
+    
+    }else if(selectedValue==9){
+        porcentAmazon=15;
+
+    }
+    console.log(porcentAmazon)
+
+    const comsaa=(porcentAmazon/ 100)
+
+
+    //taxa de envio vai depender de qual logistica a empresa aborda : verificar se e FBA , FBA Onsite, DBA ou o vendedor que envia;
+    //FBA- cinco tarifas pagas, FBA Onsite 2 tarifas pagas,  DBA 4 tarifas;
+    //verificar qual a conta está usando;
 
 
 
 
+    //formula PV
+
+    const cmuAmazon= (productPrice + taxaAmazon);
+    console.log(`aqui está meu product price ${cmuAmazon}`);
+    
+    const porcetAmazon= (imposat + comsaa+ margin)
+    console.log(`soma das porcentagens ${porcetAmazon}`);
+
+    const denomAmazon= (1-porcetAmazon);
+    console.log(denomAmazon)
 
 
-    document.getElementById('magalu').innerHTML = "<h3>Magalu:</h3><p>R$ " + buyPric.toFixed(2) + "</p>";
+    const pvAmazon= (cmuAmazon/ denomAmazon);
+    console.log(pvAmazon);
 
-    document.getElementById('amazon').innerHTML = "<h3>Amazon:</h3><p>R$ " + buyPric.toFixed(2) + "</p>";
+
+
+    //verificando
+    const impostAmazon=(pvAmazon*imposat) ,
+    comissaoAmazon=(pvAmazon*comsaa) ,
+    lucrAmazi=(pvAmazon*margin) ,
+    custoAmaz= (productPrice+taxaAmazon+impostAmazon+comissaoAmazon),
+    lucroAmaz= (pvAmazon-custoAmaz);
+
+
+
+
+    document.getElementById('amazon').innerHTML = "<h3>Amazon:</h3><p>R$ " + pvAmazon.toFixed(2) + "</p>";
+
+
+ 
+    document.getElementById('ipIpagamazon').innerHTML= "<p>Imposto pago: " + impostAmazon.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('comitamazon').innerHTML= "<p>comissão Amazon: " + comissaoAmazon.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('envioAmzon').innerHTML= "<p>Custo de envio: " + taxaAmazon.toFixed(2) + " R$ </p>";
+    
+
+
+    document.getElementById('lucroAmazon').innerHTML= "<p>Lucro: " + lucrAmazi.toFixed(2) + " R$ </p>";
+    
+
+
+    document.getElementById('custoAmazon').innerHTML= "<p>Custo total: " + custoAmaz.toFixed(2) + " R$ </p>";
+    
+
+    document.getElementById('lucroReamazon').innerHTML= "<p>Lucro Real + Imposto: " + lucroAmaz.toFixed(2) + " R$ </p>";
+
+
+
+
 
 
 

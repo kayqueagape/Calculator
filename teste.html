@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botão Toggle</title>
+</head>
+<body>
+    <button class="meu-botao">Clique-me!</button>
+
+    <style>
+        .meu-botao {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Adicione a transição */
+}
+
+.meu-botao:hover {
+    opacity: 0.8; /* Opacidade quando o mouse passa sobre o botão */
+}
+
+    </style>
+
+    <script>
+        const meuBotao = document.querySelector('.meu-botao');
+        meuBotao.addEventListener('click', () => {console.log('Botão clicado! Função executada.');
+    });
+
+    </script>
+
+</body>
+</html>

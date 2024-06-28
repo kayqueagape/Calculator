@@ -1,13 +1,270 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Preço para Plataformas Online</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <h1>Calculadora de Preço </h2>
+    
+    
+    <div class="classico-premium">
+        <input type="checkbox" value="1" name="classico" class="classicopremiumBt" id="classico-premium">
+        <label for="classico-premium" class="classicopremium"></label>
+        <p id="texto">Classico</p>
+        
+
+    </div>
+
+
+    <div class="tble">
+        <form id="priceCalculator">
+            <p></p>
+            <label for="productPrice">Preço do Produto:</label>
+            <input type="number" id="productPrice" placeholder="Digite o preço do produto" required>
+    
+            
+           
+            <label for="desiredProfit">Lucro Desejado (%):</label>
+            <input type="number" id="desiredProfit" placeholder="Digite o lucro desejado" required>
+    
+
+
+
+
+            <!-- PESO--> 
+            <form>
+                <label for="weight">Peso do Produto (em kg):</label>
+                
+                <input type="number" id="weight" placeholder="Digite o peso" required>
+
+
+                <br>
+                <button type="button" class="opemn"  onclick="calculatePrice()">Calcular Preço Total</button>
+            </form>
+
+
+            
+
+
+
+        </form>
+
+
+
+        <aside id="lado">
+            <legend>Selecione a categoria do anúncio</legend>
+            <label for=categoria"><a id="categoria" href="#">Categoria < Produto</a></label>
+
+            <main>
+                <div class="norme">
+                    <input  type="radio" name="categ" id="categoriAlimento" value="1" >
+                    <label for="categ"> Alimentos e Bebidas</label>
+    
+                </div>
+    
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriFesta" value="2" >
+                    <label for="categ">Festa e Lembrancinhas</label>
+    
+                </div>
+    
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriMateriais" value="3">
+                    <label for="categ"> Materiais Escolares</label>
+    
+                </div>
+    
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriBeleza" value="4">
+                    <label for="categ">Beleza e Cuidado Maquiagem </label>
+                </div>
+    
+    
+                <div class="norme"> 
+                    <input type="radio" name="categ" id="categoriCalcado" value="5">
+                    <label for="categ">Calçados, Roupas e Bolsas</label>
+                </div>
+    
+    
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriBrinquedo" value="6">
+                    <label for="categ"> Brinquedos e Hobbies</label>
+    
+                </div>
+    
+    
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriCasa" value="7">
+                    <label for="categ"> Casa Móveis e DECORAÇÃO</label>
+                </div>
+    
+    
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriEsporte" value="8">
+                    <label for="categ"> Esportes e Fitness</label>
+                </div>
+
+
+                <div class="norme">
+                    <input type="radio" name="categ" id="categoriEspeciais" value="9">
+                    <label for="categ">Especiais= ex: Fantasias e Outros eroticos..</label>
+
+                </div>
+
+                
+            </main>
+        </aside>
+
+
+    
+
+
+
+
+    </div>
+   
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="insid" style="display: none;">
+    
+        <div id="mercadolivrea">
+            <div id="totalPrice"></div>
+
+            <div>
+                <h2 id="mercadolivre"></h2>
+                
+                <p id=""></p>
+
+
+                <p>Especificações desejadas:</p>
+                <p id="imPost">Imposto pago:</p>
+
+                <p id="comiscate">Comissão da mercado livre:</p>
+
+                <p id="shippingPrice">Envio</p>
+
+                <p id="lucrVend">Lucro:</p>
+
+                <p id="custProd">Custo total:</p>
+
+                <p id="lucroRes">Lucro Real:</p>
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div id="magalua">
+            <div id="totalpriceMaglu"></div>
+            
+
+            <div>
+                <h2 id="magalu"></h2>
+                <p id=""></p>
+
+                <p>Especificações desejadas:</p>
+                <p id="ipIpag">Imposto pago:</p>
+
+                <p id="comitmagu">Comissão da Magalu:</p>
+
+                <p id="envioLua">Envio</p>
+            
+
+                <p id="lucroMagami">Lucro:</p>
+
+                <p id="custoTomagu">Custo total:</p>
+
+                <p id="lucroReamga">Lucro Real:</p>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div id="amazona">
+            
+            <div id="totalpriceAmazon"></div>
+            
+            <div>
+                <h2 id="amazon"></h2>
+                <p id=""> </p>
+                <p>Especificações desejadas:</p>
+
+                <p id="ipIpagamazon">Imposto pago:</p>
+
+                <p id="comitamazon">Comissão da Magalu:</p>
+
+                <p id="envioAmzon">Envio</p>
+            
+
+                <p id="lucroAmazon">Lucro:</p>
+
+                <p id="custoAmazon">Custo total:</p>
+
+                <p id="lucroReamazon">Lucro Real:</p>
+
+            </div>
+        </div>
+
+
+
+        <div id="shopeea">
+            <div id="totalpriceShopee"></div>
+
+            <div>
+
+
+                <h2 id="shopee"></h2>
+                <p id="lucroLiqshope"></p>
+
+                <p>Especificações desejadas:</p>
+                <p id="postpag">Imposto pago:</p>
+
+                <p id="comi">Comissão da shope:</p>
+
+                <p>Custo de envio: 3 R$</p>
+
+                <p id="luc">Lucro:</p>
+
+                <p id="custo">Custo total:</p>
+
+                <p id="lucr">Lucro Real:</p>
+
+
+
+            </div>
+        </div>
+      
+        
+    </div>
+    
+    
+
+</body>
 </html>
